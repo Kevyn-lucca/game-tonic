@@ -1,0 +1,31 @@
+.default:hover {
+	transform: translate3d(0, -8px, 0); /* Move para cima 5 pixels */
+	box-shadow: 0 8px 16px rgba(0, 0, 0, 1); /* Adiciona uma sombra suave */
+	transition: transform 0.5s ease, box-shadow 0.5s ease; /* Transição suave */
+}
+
+.default {
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 1); /* Adiciona uma sombra leve */
+
+	transition: transform 0.5s ease, box-shadow 0.3s ease; /* Transição suave */
+}
+
+.active {
+	animation: slide-in 0.8s forwards;
+}
+
+@keyframes slide-in {
+	0% {
+		transform: scale(0.2);
+		transform: translateX(100%);
+	}
+
+	50% {
+		transform: scale(0.5);
+	}
+
+	100% {
+		transform: translateX(0);
+		transform: scale(1);
+	}
+}

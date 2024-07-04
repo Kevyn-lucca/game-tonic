@@ -12,9 +12,25 @@ import {
 	InputGroup,
 } from "@chakra-ui/react";
 import { SearchIcon } from "@chakra-ui/icons";
+import Carrosel from "./Carrosel.jsx";
+import FetchRequest from "./FetchRequest.jsx";
+import TagGraber from "./Tags.jsx";
 
 function GameNav({ imgurl }) {
+	const { games, loading, error } = FetchRequest("games");
 	const [selectedTab, setSelectedTab] = useState(null);
+
+	if (loading) return <p>Loading...</p>; // Mostrar loading enquanto os jogos estão sendo carregados
+	if (error) return <p>Error: {error.message}</p>; // Mostrar erro se houver algum problema com a requisição
+
+	const RequestedGames =
+		games && games.results
+			? games.results.map((game) => ({
+					RequestedImgs: game.background_image,
+					RequestedName: game.name,
+					// eslint-disable-next-line no-mixed-spaces-and-tabs
+			  }))
+			: [];
 
 	const handleTabClick = (index) => {
 		if (selectedTab === index) {
@@ -39,7 +55,7 @@ function GameNav({ imgurl }) {
 				isLazy
 				position="relative"
 				variant="unstyled"
-				defaultIndex="null"
+				defaultIndex={null} // Fix: Use null instead of "null"
 				marginTop="5rem"
 				index={selectedTab}
 			>
@@ -47,7 +63,7 @@ function GameNav({ imgurl }) {
 					backgroundColor="blue.600"
 					padding="1px"
 					display="flex"
-					alignItems="center"
+					placeContent="center"
 				>
 					<Tab
 						width="7rem"
@@ -117,12 +133,17 @@ function GameNav({ imgurl }) {
 
 				<TabPanels>
 					<TabPanel backgroundColor="blue.600" color="white">
-						<p>Um Carrosel com as imagens deve vir aqui</p>
+						<Carrosel
+							TotalItens={6}
+							TotalImgs={3}
+							GameName={RequestedGames.map((game) => game.RequestedName)}
+							GameUrl={RequestedGames.map((game) => game.RequestedImgs)}
+						/>
 					</TabPanel>
 					<TabPanel></TabPanel>
 
 					<TabPanel backgroundColor="blue.600" color="white">
-						<p>Uma aba com varias tags deve vir aqui</p>
+						<TagGraber />
 					</TabPanel>
 					<TabPanel></TabPanel>
 				</TabPanels>
