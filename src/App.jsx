@@ -4,8 +4,8 @@ import Carrosel from "./Carrosel.jsx";
 function App() {
 	return (
 		<>
-    <GameNav imgurl={} />
-			<Carrosel TotalItens={2} GameName={} GameUrl={} />
+			<GameNav imgurl="d" />
+			<Carrosel TotalItens={2} GameName="2" GameUrl="2" />
 		</>
 	);
 }
