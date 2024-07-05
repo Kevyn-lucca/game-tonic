@@ -52,10 +52,9 @@ function GameNav({ imgurl }) {
 		>
 			<Tabs
 				opacity="0.9"
-				isLazy
 				position="relative"
 				variant="unstyled"
-				defaultIndex={null} // Fix: Use null instead of "null"
+				defaultIndex={null}
 				marginTop="5rem"
 				index={selectedTab}
 			>
