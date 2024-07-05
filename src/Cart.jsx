@@ -1,4 +1,4 @@
-import { useCart } from "../contexts/CartContext";
+import { useCart } from "./ProductCartContext";
 import Product from "./Product";
 
 const Cart = () => {
@@ -12,11 +12,15 @@ const Cart = () => {
 			) : (
 				<ul>
 					{state.items.map((item) => (
-						<Product key={item.id} item={item} />
+						<Product
+							key={item.id}
+							id={item.id}
+							name={item.name}
+							img={item.img}
+						/>
 					))}
 				</ul>
 			)}
-			<p>Total Amount: ${state.totalAmount}</p>
 		</div>
 	);
 };

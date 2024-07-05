@@ -1,5 +1,4 @@
 /* eslint-disable no-case-declarations */
-
 // src/contexts/CartContext.js
 import { createContext, useReducer, useContext } from "react";
 
@@ -14,19 +13,16 @@ const cartReducer = (state, action) => {
 	switch (action.type) {
 		case "ADD_ITEM":
 			const updatedItems = [...state.items, action.payload];
-			const updatedTotalAmount = state.totalAmount + action.payload.price;
+
 			return {
 				items: updatedItems,
-				totalAmount: updatedTotalAmount,
 			};
 		case "REMOVE_ITEM":
 			const filteredItems = state.items.filter(
 				(item) => item.id !== action.payload.id
 			);
-			const reducedTotalAmount = state.totalAmount - action.payload.price;
 			return {
 				items: filteredItems,
-				totalAmount: reducedTotalAmount,
 			};
 		default:
 			return state;
@@ -37,7 +33,7 @@ const cartReducer = (state, action) => {
 const CartContext = createContext();
 
 // Componente provider do carrinho
-export const CartProvider = ({ children }) => {
+const CartProvider = ({ children }) => {
 	const [state, dispatch] = useReducer(cartReducer, initialState);
 
 	return (
@@ -47,7 +43,10 @@ export const CartProvider = ({ children }) => {
 	);
 };
 
-// Hook customizado para usar o contexto do carrinho
 export const useCart = () => {
 	return useContext(CartContext);
 };
+
+// Hook customizado para usar o contexto do carrinho
+
+export default CartProvider;
