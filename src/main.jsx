@@ -4,7 +4,7 @@ import App from "./App.jsx";
 import "./index.css";
 
 import { ChakraProvider } from "@chakra-ui/react";
-import CartProvider from "./ProductCart.jsx";
+import CartProvider from "./ProductCartContext.js";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
 	<React.StrictMode>

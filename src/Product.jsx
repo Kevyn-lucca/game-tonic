@@ -1,4 +1,4 @@
-import { useCart } from "./ProductCart";
+import { useCart } from "./ProductCartContext";
 
 function Product(id, name, img) {
 	const { dispatch } = useCart();
