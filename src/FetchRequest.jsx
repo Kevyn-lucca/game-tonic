@@ -1,7 +1,8 @@
 import axios from "axios";
+
 import { useState, useEffect } from "react";
 
-const FetchRequest = (toFetch, page) => {
+const FetchRequest = (toFetch, page, id) => {
 	const [games, setGames] = useState([]);
 	const [loading, setLoading] = useState(false);
 	const [error, setError] = useState(null);
@@ -12,7 +13,7 @@ const FetchRequest = (toFetch, page) => {
 				setLoading(true);
 				try {
 					const response = await axios.get(
-						`https://api.rawg.io/api/${toFetch}`,
+						`https://api.rawg.io/api/${toFetch}${id ? id : ""}`,
 						{
 							params: {
 								page: page,
@@ -29,7 +30,7 @@ const FetchRequest = (toFetch, page) => {
 			};
 			fetchGames();
 		}
-	}, [toFetch, page]);
+	}, [toFetch, page, id]);
 
 	return { games, loading, error };
 };

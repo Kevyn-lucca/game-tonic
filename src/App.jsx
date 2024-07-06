@@ -3,7 +3,7 @@ import FetchRequest from "./FetchRequest";
 import Cart from "./Cart";
 
 function App() {
-	const { games, loading, error } = FetchRequest("games", "2");
+	const { games, loading, error } = FetchRequest("games", "1");
 
 	if (loading) {
 		return <div>Loading...</div>;
