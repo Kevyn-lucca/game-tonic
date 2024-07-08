@@ -6,6 +6,7 @@ import { ChakraProvider } from "@chakra-ui/react";
 import CartProvider from "./ProductCartContext.jsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import ProductPage from "./ProductPage.jsx";
+import Cart from "./Cart.jsx";
 
 const router = createBrowserRouter([
 	{
@@ -15,6 +16,10 @@ const router = createBrowserRouter([
 	{
 		path: "/ProductPage/:id",
 		element: <ProductPage />,
+	},
+	{
+		path: "/Cart",
+		element: <Cart />,
 	},
 ]);
 
@@ -29,11 +34,11 @@ ReactDOM.createRoot(document.getElementById("root")).render(
 );
 /*
 	Todos:
+	estilizar os produtos
 	estilizar o carrinho
 	estilizar os carroseis de produtos
 	criar paginas de empresas
 	criar rotas a partir das tag (a logica de busca por item especifico pode ser a mesma de product page)
-	criar o componente product page, um componente gerado a partir das rotas (o componente deve ser criado a partir do id do produto)
 	criar um carrosel para screenshots do jogo para o componente "Product page"
 
 */

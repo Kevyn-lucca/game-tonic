@@ -16,6 +16,7 @@ const FetchRequest = (toFetch, page, id) => {
 						`https://api.rawg.io/api/${toFetch}${id ? id : ""}`,
 						{
 							params: {
+								metacritic: 30,
 								page: page,
 								key: "baeef12d9a4f4125a566fff7936a6381",
 							},

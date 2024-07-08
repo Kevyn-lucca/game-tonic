@@ -33,7 +33,7 @@ function GameNav({ imgurl, GameId, GameImg, GameName }) {
 			bgImage={imgurl}
 			bgSize="cover"
 			bgPos="center"
-			height="45rem"
+			height="46.63rem"
 			bgRepeat="no-repeat"
 		>
 			<Tabs
@@ -137,6 +137,11 @@ function GameNav({ imgurl, GameId, GameImg, GameName }) {
 	);
 }
 
-GameNav.propTypes = { imgurl: PropTypes.string.isRequired };
+GameNav.propTypes = {
+	imgurl: PropTypes.string.isRequired,
+	GameName: PropTypes.array.isRequired,
+	GameImg: PropTypes.array.isRequired,
+	GameId: PropTypes.array.isRequired,
+};
 
 export default GameNav;

@@ -44,10 +44,9 @@ function Carrosel({
 					key={GameId[getIndex(ImgNumber + index)]}
 					id={GameId[getIndex(ImgNumber + index)]}
 					name={GameName[getIndex(ImgNumber + index)]}
-					boxSize="20rem"
-					mx="10px"
 					img={GameUrl[getIndex(ImgNumber + index)]}
 					alt={GameName[getIndex(ImgNumber + index)] + " img"}
+					noButton={false}
 					className={`default ${isHighlighted ? "active " : ""}`}
 					onAnimationEnd={handleTransitionEnd}
 				/>

@@ -1,6 +1,6 @@
 import GameNav from "./Nav";
 import FetchRequest from "./FetchRequest";
-import Cart from "./Cart";
+import { Link } from "react-router-dom";
 
 function App() {
 	const { games, loading, error } = FetchRequest("games", "1");
@@ -36,7 +36,9 @@ function App() {
 
 	return (
 		<>
-			<Cart />
+			<button>
+				<Link to={"/Cart"}> szsdas </Link>
+			</button>
 			<GameNav
 				imgurl={NavImg}
 				GamePrice={RequestedGames.map((game) => game.RequestedPrice)}
