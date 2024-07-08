@@ -2,7 +2,7 @@ import axios from "axios";
 
 import { useState, useEffect } from "react";
 
-const FetchRequest = (toFetch, page, id) => {
+const FetchRequest = (toFetch, page, id, genre) => {
 	const [games, setGames] = useState([]);
 	const [loading, setLoading] = useState(false);
 	const [error, setError] = useState(null);
@@ -16,7 +16,7 @@ const FetchRequest = (toFetch, page, id) => {
 						`https://api.rawg.io/api/${toFetch}${id ? id : ""}`,
 						{
 							params: {
-								metacritic: 30,
+								genres: genre,
 								page: page,
 								key: "baeef12d9a4f4125a566fff7936a6381",
 							},
@@ -31,7 +31,7 @@ const FetchRequest = (toFetch, page, id) => {
 			};
 			fetchGames();
 		}
-	}, [toFetch, page, id]);
+	}, [toFetch, page, id, genre]);
 
 	return { games, loading, error };
 };

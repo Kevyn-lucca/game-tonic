@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useCart } from "./ProductCartContext";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 
 function Product({ id, name, img, noButton }) {
 	const { dispatch, state } = useCart();
@@ -26,6 +27,9 @@ function Product({ id, name, img, noButton }) {
 					className=" bg-cover bg-center bg-no-repeat h-64 w-64"
 				></div>
 			</Link>
+			<h1 className=" bg-black w-64 h-8 pt-1 truncate text-2xl text-center text-white top-14 transition-opacity">
+				{name}
+			</h1>
 			{!noButton && (
 				<div className=" absolute opacity-0 justify-items-center w-64  hover:origin-top hover:opacity-100 justify-self-center  transition-all top-0 flex flex-col justify-between">
 					<button
@@ -40,4 +44,10 @@ function Product({ id, name, img, noButton }) {
 	);
 }
 
+Product.propTypes = {
+	id: PropTypes.number.isRequired,
+	name: PropTypes.string.isRequired,
+	img: PropTypes.string.isRequired,
+	noButton: PropTypes.bool.isRequired,
+};
 export default Product;

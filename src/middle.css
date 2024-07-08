@@ -10,10 +10,10 @@
 }
 
 .active-right {
-	animation: slide-in-rigth 0.8s forwards;
+	animation: slide-in-rigth 0.5s forwards;
 }
 .active-left {
-	animation: slide-in-left 0.8s forwards;
+	animation: slide-in-left 0.5s forwards;
 }
 
 @keyframes slide-in-rigth {

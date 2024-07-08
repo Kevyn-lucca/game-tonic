@@ -1,6 +1,7 @@
 import GameNav from "./Nav";
 import FetchRequest from "./FetchRequest";
-import { Link } from "react-router-dom";
+import Header from "./Header";
+import CarroselAdventure from "./CarroselAdventure";
 
 function App() {
 	const { games, loading, error } = FetchRequest("games", "1");
@@ -32,20 +33,19 @@ function App() {
 			  }))
 			: [];
 
-	RequestedGames.map((game) => game.RequestedPrice);
-
 	return (
 		<>
-			<button>
-				<Link to={"/Cart"}> szsdas </Link>
-			</button>
+			<Header></Header>
 			<GameNav
 				imgurl={NavImg}
-				GamePrice={RequestedGames.map((game) => game.RequestedPrice)}
 				GameImg={RequestedGames.map((game) => game.RequestedImgs)}
 				GameId={RequestedGames.map((game) => game.RequestedID)}
 				GameName={RequestedGames.map((game) => game.RequestedName)}
 			/>
+			<CarroselAdventure genre={"adventure"} />
+			<CarroselAdventure genre={"role-playing-games-rpg"} />
+			<CarroselAdventure genre={"action"} />
+			<CarroselAdventure genre={"sports"} />
 		</>
 	);
 }

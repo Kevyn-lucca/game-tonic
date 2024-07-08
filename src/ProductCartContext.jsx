@@ -1,7 +1,7 @@
 /* eslint-disable no-case-declarations */
 // src/contexts/CartContext.js
 import { createContext, useReducer, useContext } from "react";
-
+import PropTypes from "prop-types";
 // Estado inicial do carrinho
 const initialState = {
 	items: [],
@@ -47,6 +47,9 @@ export const useCart = () => {
 	return useContext(CartContext);
 };
 
+CartProvider.propTypes = {
+	children: PropTypes.node.isRequired,
+};
 // Hook customizado para usar o contexto do carrinho
 
 export default CartProvider;
