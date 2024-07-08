@@ -23,11 +23,11 @@ function Product({ id, name, img, noButton }) {
 			<Link to={`/ProductPage/${id}`}>
 				<div
 					style={{ backgroundImage: `url(${img})` }}
-					className=" ml-2 mr-2 bg-cover bg-center bg-no-repeat h-64 w-64"
+					className=" bg-cover bg-center bg-no-repeat h-64 w-64"
 				></div>
 			</Link>
 			{!noButton && (
-				<div className=" ml-2 absolute opacity-0 justify-items-center w-64  hover:origin-top hover:opacity-100 justify-self-center  transition-all  top-16 flex flex-col justify-between">
+				<div className=" absolute opacity-0 justify-items-center w-64  hover:origin-top hover:opacity-100 justify-self-center  transition-all top-0 flex flex-col justify-between">
 					<button
 						className="bg-green-500 p-2 text-xl border-b-4 border-solid text-black border-black"
 						onClick={CartHandler}

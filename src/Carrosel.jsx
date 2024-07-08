@@ -14,20 +14,22 @@ function Carrosel({
 	TotalImgs,
 }) {
 	const [ImgNumber, setImgNumber] = useState(0);
-	const [isHighlighted, setIsHighlighted] = useState(false); // Estado para controlar a classe dinâmica
+	const [isHighlightedright, setIsHighlightedright] = useState(false); // Estado para controlar a classe dinâmica
+	const [isHighlightedleft, setIsHighlightedleft] = useState(false);
 
 	const HandleClickForward = () => {
 		setImgNumber((ImgNumber + 1) % TotalItens);
-		setIsHighlighted(true); // Define como true para adicionar a classe
+		setIsHighlightedright(true); // Define como true para adicionar a classe
 	};
 
 	const HandleClickBack = () => {
 		setImgNumber((ImgNumber - 1 + TotalItens) % TotalItens);
-		setIsHighlighted(true); // Define como true para adicionar a classe
+		setIsHighlightedleft(true); // Define como true para adicionar a classe
 	};
 
 	const handleTransitionEnd = () => {
-		setIsHighlighted(false); // Define como false para remover a classe após a transição
+		setIsHighlightedleft(false);
+		setIsHighlightedright(false); // Define como false para remover a classe após a transição
 	};
 
 	const getIndex = (index) => (index + TotalImgs) % TotalItens;
@@ -39,18 +41,26 @@ function Carrosel({
 				onClick={HandleClickBack}
 				aria-label="Previous image"
 			/>
+
 			{Array.from({ length: TotalImgs }).map((_, index) => (
-				<Product
-					key={GameId[getIndex(ImgNumber + index)]}
-					id={GameId[getIndex(ImgNumber + index)]}
-					name={GameName[getIndex(ImgNumber + index)]}
-					img={GameUrl[getIndex(ImgNumber + index)]}
-					alt={GameName[getIndex(ImgNumber + index)] + " img"}
-					noButton={false}
-					className={`default ${isHighlighted ? "active " : ""}`}
+				<div
+					key={index}
+					className={`ml-2 mr-2  default ${
+						isHighlightedright ? "active-right" : ""
+					} ${isHighlightedleft ? "active-left " : ""} `}
 					onAnimationEnd={handleTransitionEnd}
-				/>
+				>
+					<Product
+						key={GameId[getIndex(ImgNumber + index)]}
+						id={GameId[getIndex(ImgNumber + index)]}
+						name={GameName[getIndex(ImgNumber + index)]}
+						img={GameUrl[getIndex(ImgNumber + index)]}
+						alt={GameName[getIndex(ImgNumber + index)] + " img"}
+						noButton={false}
+					/>
+				</div>
 			))}
+
 			<IconButton
 				icon={<ArrowForwardIcon />}
 				onClick={HandleClickForward}
