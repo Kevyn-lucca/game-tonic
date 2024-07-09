@@ -1,13 +1,18 @@
 import GameNav from "./Nav";
 import FetchRequest from "./FetchRequest";
 import Header from "./Header";
+import { Spinner } from "@chakra-ui/react";
 import CarroselAdventure from "./CarroselAdventure";
 
 function App() {
 	const { games, loading, error } = FetchRequest("games", "1");
 
 	if (loading) {
-		return <div>Loading...</div>;
+		return (
+			<div className=" flex place-content-center bg-black h-screen ">
+				<Spinner marginTop="20rem" color="white" />
+			</div>
+		);
 	}
 
 	if (error) {
@@ -15,7 +20,7 @@ function App() {
 	}
 
 	if (!games || !games.results || games.results.length === 0) {
-		return <div>No games available</div>;
+		return;
 	}
 
 	const NavImg =

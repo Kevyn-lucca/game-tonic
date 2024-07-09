@@ -35,9 +35,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
 /*
 	Todos:
 	Gravar um video mostrando as novas funções
-	criar paginas de empresas
-	criar rotas a partir das tag (a logica de busca por item especifico pode ser a mesma de product page)
-	criar um carrosel para screenshots do jogo para o componente "Product page"
 	Estilzar a product page
 	Criar o componete de slider time
+	criar um footer
 */

@@ -13,7 +13,6 @@ import {
 } from "@chakra-ui/react";
 import { SearchIcon } from "@chakra-ui/icons";
 import Carrosel from "./Carrosel.jsx";
-import TagGraber from "./Tags.jsx";
 
 function GameNav({ imgurl, GameId, GameImg, GameName }) {
 	const [selectedTab, setSelectedTab] = useState(null);
@@ -76,19 +75,7 @@ function GameNav({ imgurl, GameId, GameImg, GameName }) {
 					>
 						New games
 					</Tab>
-					<Tab
-						width="7rem"
-						height="2.5rem"
-						backgroundColor="blue.600"
-						color="white"
-						_hover={{
-							bgGradient: "linear(to-r, blue.500, blue.300)",
-						}}
-						_selected={{ bg: "blue.500" }}
-						onClick={() => handleTabClick(2)}
-					>
-						Tags
-					</Tab>
+
 					<Tab
 						width="7rem"
 						height="2.5rem"
@@ -99,7 +86,7 @@ function GameNav({ imgurl, GameId, GameImg, GameName }) {
 							bgGradient: "linear(to-r, blue.500, blue.300)",
 						}}
 						_selected={{ bg: "blue.500" }}
-						onClick={() => handleTabClick(3)}
+						onClick={() => handleTabClick(2)}
 					>
 						Deals
 					</Tab>
@@ -126,10 +113,7 @@ function GameNav({ imgurl, GameId, GameImg, GameName }) {
 							GameId={GameId}
 						/>
 					</TabPanel>
-					<TabPanel></TabPanel>s
-					<TabPanel backgroundColor="blue.600" color="white">
-						<TagGraber />
-					</TabPanel>
+					<TabPanel></TabPanel>
 					<TabPanel></TabPanel>
 				</TabPanels>
 			</Tabs>

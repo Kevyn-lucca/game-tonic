@@ -33,7 +33,9 @@ function Product({ id, name, img, noButton }) {
 			{!noButton && (
 				<div className=" absolute opacity-0 justify-items-center w-64  hover:origin-top hover:opacity-100 justify-self-center  transition-all top-0 flex flex-col justify-between">
 					<button
-						className="bg-green-500 p-2 text-xl border-b-4 border-solid text-black border-black"
+						className={`${
+							clicked ? "bg-red-500" : "bg-green-500"
+						} p-2 text-xl border-b-4 border-solid text-black border-black`}
 						onClick={CartHandler}
 					>
 						{clicked ? "Remove from cart" : "Add to cart"}
