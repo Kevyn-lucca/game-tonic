@@ -11,17 +11,34 @@ import {
 	InputRightElement,
 	InputGroup,
 } from "@chakra-ui/react";
+import { Link, useNavigate } from "react-router-dom";
 import { SearchIcon } from "@chakra-ui/icons";
 import Carrosel from "./Carrosel.jsx";
 
 function GameNav({ imgurl, GameId, GameImg, GameName }) {
 	const [selectedTab, setSelectedTab] = useState(null);
+	const [searchValue, setSearchValue] = useState("");
+	const navigate = useNavigate();
+
+	const handleChange = (e) => {
+		setSearchValue(e.target.value);
+	};
 
 	const handleTabClick = (index) => {
 		if (selectedTab === index) {
 			setSelectedTab(null);
 		} else {
 			setSelectedTab(index);
+		}
+	};
+
+	const handleSearch = () => {
+		navigate(`/ProductPage/${searchValue}`);
+	};
+
+	const handleKeyDown = (e) => {
+		if (e.key === "Enter") {
+			handleSearch();
 		}
 	};
 
@@ -62,34 +79,37 @@ function GameNav({ imgurl, GameId, GameImg, GameName }) {
 					>
 						For you
 					</Tab>
-					<Tab
-						width="8rem"
-						height="2.5rem"
-						backgroundColor="blue.600"
-						color="white"
-						_hover={{
-							bgGradient: "linear(to-r, blue.500, blue.300)",
-						}}
-						_selected={{ bg: "blue.500" }}
-						onClick={() => handleTabClick(1)}
-					>
-						New games
-					</Tab>
-
-					<Tab
-						width="7rem"
-						height="2.5rem"
-						marginRight="4rem"
-						backgroundColor="blue.600"
-						color="white"
-						_hover={{
-							bgGradient: "linear(to-r, blue.500, blue.300)",
-						}}
-						_selected={{ bg: "blue.500" }}
-						onClick={() => handleTabClick(2)}
-					>
-						Deals
-					</Tab>
+					<Link to={"/SpecificPage/adventure"}>
+						<Tab
+							width="8rem"
+							height="2.5rem"
+							backgroundColor="blue.600"
+							color="white"
+							_hover={{
+								bgGradient: "linear(to-r, blue.500, blue.300)",
+							}}
+							_selected={{ bg: "blue.500" }}
+							onClick={() => handleTabClick(1)}
+						>
+							New games
+						</Tab>
+					</Link>
+					<Link to={"/SpecificPage/indie"}>
+						<Tab
+							width="7rem"
+							height="2.5rem"
+							marginRight="4rem"
+							backgroundColor="blue.600"
+							color="white"
+							_hover={{
+								bgGradient: "linear(to-r, blue.500, blue.300)",
+							}}
+							_selected={{ bg: "blue.500" }}
+							onClick={() => handleTabClick(2)}
+						>
+							Deals
+						</Tab>
+					</Link>
 					<InputGroup
 						width="15rem"
 						border="solid"
@@ -97,9 +117,18 @@ function GameNav({ imgurl, GameId, GameImg, GameName }) {
 						focusBorderColor="white"
 					>
 						<InputRightElement cursor="pointer" backgroundColor="green.400">
-							<SearchIcon />
+							<Link to={`/ProductPage/${searchValue}`}>
+								<SearchIcon />
+							</Link>
 						</InputRightElement>
-						<Input color="white" width="15rem" placeholder="Search" />
+						<Input
+							color="white"
+							width="15rem"
+							placeholder="Search"
+							value={searchValue}
+							onChange={handleChange}
+							onKeyDown={handleKeyDown}
+						/>
 					</InputGroup>
 				</TabList>
 

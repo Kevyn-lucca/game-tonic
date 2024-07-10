@@ -1,19 +1,32 @@
 import Carrosel from "./Carrosel";
 import FetchRequest from "./FetchRequest";
 import PropTypes from "prop-types";
+import { Spinner } from "@chakra-ui/react";
 function CarroselAdventure({ genre }) {
 	const { games, loading, error } = FetchRequest("games", "1", "", `${genre}`);
 
 	if (loading) {
-		return <div>Loading...</div>;
+		return (
+			<div className=" flex place-content-center bg-black h-screen ">
+				<Spinner marginTop="20rem" color="white" />
+			</div>
+		);
 	}
 
 	if (error) {
-		return <div>Error: {error.message}</div>;
+		<div className=" flex place-content-center bg-black h-screen ">
+			<p className="text-4xl text-white font-bold">
+				A Error has occurred please come back later{" "}
+			</p>
+		</div>;
 	}
 
 	if (!games || !games.results || games.results.length === 0) {
-		return <div>No games available</div>;
+		return (
+			<div className=" flex place-content-center bg-black h-screen ">
+				<p className="text-4xl text-white font-bold">No Games Available</p>
+			</div>
+		);
 	}
 
 	const RequestedGames =

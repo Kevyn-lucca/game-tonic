@@ -7,6 +7,7 @@ import CartProvider from "./ProductCartContext.jsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import ProductPage from "./ProductPage.jsx";
 import Cart from "./Cart.jsx";
+import Spage from "./SpecifcPage.jsx";
 
 const router = createBrowserRouter([
 	{
@@ -20,6 +21,10 @@ const router = createBrowserRouter([
 	{
 		path: "/Cart",
 		element: <Cart />,
+	},
+	{
+		path: "/SpecificPage/:Specif",
+		element: <Spage />,
 	},
 ]);
 
@@ -35,7 +40,6 @@ ReactDOM.createRoot(document.getElementById("root")).render(
 /*
 	Todos:
 	Gravar um video mostrando as novas funções
-	Estilzar a product page
-	Criar o componete de slider time
+
 	criar um footer
 */

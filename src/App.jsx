@@ -3,7 +3,7 @@ import FetchRequest from "./FetchRequest";
 import Header from "./Header";
 import { Spinner } from "@chakra-ui/react";
 import CarroselAdventure from "./CarroselAdventure";
-
+import Footer from "./footer";
 function App() {
 	const { games, loading, error } = FetchRequest("games", "1");
 
@@ -16,7 +16,13 @@ function App() {
 	}
 
 	if (error) {
-		return <div>Error: {error.message}</div>;
+		return (
+			<div className=" flex place-content-center bg-black h-screen ">
+				<p className="text-4xl mt-40 text-white font-bold">
+					A Error has occurred please come back later{" "}
+				</p>
+			</div>
+		);
 	}
 
 	if (!games || !games.results || games.results.length === 0) {
@@ -51,6 +57,7 @@ function App() {
 			<CarroselAdventure genre={"role-playing-games-rpg"} />
 			<CarroselAdventure genre={"action"} />
 			<CarroselAdventure genre={"sports"} />
+			<Footer></Footer>
 		</>
 	);
 }

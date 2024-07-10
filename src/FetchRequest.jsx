@@ -2,7 +2,7 @@ import axios from "axios";
 
 import { useState, useEffect } from "react";
 
-const FetchRequest = (toFetch, page, id, genre, screenshots) => {
+const FetchRequest = (toFetch, page, id, genre) => {
 	const [games, setGames] = useState([]);
 	const [loading, setLoading] = useState(false);
 	const [error, setError] = useState(null);
@@ -13,9 +13,8 @@ const FetchRequest = (toFetch, page, id, genre, screenshots) => {
 				setLoading(true);
 				try {
 					const response = await axios.get(
-						`https://api.rawg.io/api/${toFetch}${id ? id : ""}${
-							screenshots ? screenshots : ""
-						}`,
+						`https://api.rawg.io/api/${toFetch}${id ? id : ""}
+						`,
 						{
 							params: {
 								genres: genre,
@@ -33,7 +32,7 @@ const FetchRequest = (toFetch, page, id, genre, screenshots) => {
 			};
 			fetchGames();
 		}
-	}, [toFetch, page, id, genre, screenshots]);
+	}, [toFetch, page, id, genre]);
 
 	return { games, loading, error };
 };

@@ -3,7 +3,7 @@ import { useCart } from "./ProductCartContext";
 import { useState } from "react";
 import { Spinner } from "@chakra-ui/react";
 import FetchRequest from "./FetchRequest";
-import { Link } from "react-router-dom";
+import Header from "./Header";
 
 function stripHTML(html) {
 	if (!html) return "";
@@ -25,11 +25,23 @@ function ProductPage() {
 		);
 	}
 	if (error) {
-		return <div>Error: {error.message}</div>;
+		return (
+			<div className=" flex place-content-center bg-black h-screen ">
+				<p className="text-4xl mt-40 text-white font-bold">
+					A Error has occurred please come back later{" "}
+				</p>
+			</div>
+		);
 	}
 
 	if (!games) {
-		return <div>No game data available</div>;
+		return (
+			<div className=" flex place-content-center bg-black h-screen ">
+				<p className="text-4xl mt-40 text-white font-bold">
+					No Games Available
+				</p>
+			</div>
+		);
 	}
 
 	const name = games.name;
@@ -50,14 +62,9 @@ function ProductPage() {
 
 	return (
 		<div className="bg-black h-screen text-white">
-			<div className="flex place-content-center">
-				<h1 className="text-4xl p-4">{name}</h1>
-				<Link to={"/"}>
-					<button className="ml-64 mt-5">Return</button>
-				</Link>
-			</div>
-			<div className="flex justify-around">
-				<img src={img} className="w-2/3 h-2/3" alt={name + " image"} />
+			<Header></Header>
+			<div className="flex justify-around bg-black">
+				<img src={img} className="w-2/3 " alt={name + " image"} />
 				<div className="mr-24 mt-24">
 					<button
 						className={`p-2 ${
