@@ -1,11 +1,11 @@
 function Footer() {
 	return (
-		<div className="bg-black text-gray-400 gap-5 p-4 place-content-center flex">
+		<div className="bg-black text-gray-400 gap-5 p-2 place-content-center flex">
 			<a href="https://github.com/Kevyn-lucca">
 				<svg
 					fill="#9a9996"
-					height="24px"
-					width="24px"
+					height="26px"
+					width="26px"
 					version="1.1"
 					id="Layer_1"
 					xmlns="http://www.w3.org/2000/svg"
